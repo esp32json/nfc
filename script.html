@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Гучний звук</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        body {
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        img {
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <img src="image.jpg" alt="Фон" id="image">
+
+    <audio id="sound" src="sound.mp3"></audio>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            let audio = document.getElementById("sound");
+            let img = document.getElementById("image");
+
+            audio.volume = 1.0;
+
+            // Додаємо подію на перший клік
+            const playAudio = () => {
+                audio.play().catch(err => console.log("Автозапуск заблокований", err));
+                document.body.removeEventListener("click", playAudio);
+            };
+
+            document.body.addEventListener("click", playAudio);
+        });
+    </script>
+
+</body>
+</html>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Гучний звук</title>
+    <title>NFC SoundTag Bells</title>
     <style>
         * {
             margin: 0;
@@ -36,16 +36,15 @@
             let audio = document.getElementById("sound");
             let img = document.getElementById("image");
 
-            // Встановлюємо максимальну гучність
             audio.volume = 1.0;  // Це максимальна гучність
 
-            // Додаємо подію на перший клік для відтворення аудіо
+            
             const playAudio = () => {
-                audio.play().catch(err => console.log("Автозапуск заблокований", err));
+                audio.play().catch(err => console.log("Autoplay Blocked", err));
                 document.body.removeEventListener("click", playAudio);
             };
 
-            // Відтворюємо звук після першого кліку по сторінці
+        
             document.body.addEventListener("click", playAudio);
         });
     </script>

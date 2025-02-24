@@ -20,7 +20,7 @@
         img {
             width: 100vw;
             height: 100vh;
-            object-fit: cover;
+            object-fit: contain;  /* Зберігає пропорції картинки */
             cursor: pointer;
         }
     </style>
@@ -36,14 +36,16 @@
             let audio = document.getElementById("sound");
             let img = document.getElementById("image");
 
-            audio.volume = 1.0;
+            // Встановлюємо максимальну гучність
+            audio.volume = 1.0;  // Це максимальна гучність
 
-            // Додаємо подію на перший клік
+            // Додаємо подію на перший клік для відтворення аудіо
             const playAudio = () => {
                 audio.play().catch(err => console.log("Автозапуск заблокований", err));
                 document.body.removeEventListener("click", playAudio);
             };
 
+            // Відтворюємо звук після першого кліку по сторінці
             document.body.addEventListener("click", playAudio);
         });
     </script>
